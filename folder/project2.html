@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        text-align: center;
+        background-color: green;
+        display: flex;
+        justify-content: center;
+    }
+    .contaner{
+        background-color: white;
+        border-radius: 5px;
+        border-width: 5px;
+        border-color: red;
+        height: fit-content;
+        width: fit-content;
+    }
+</style>
+<body>
+    <div class="contaner">
+        <h1>Enter student data</h1>
+        <input type="text" id="iteminput" placeholder="Enter data">
+        <button id="additembutton">Add item</button>
+        <ul id="itemlist"></ul>
+    </div>
+    <script>
+        const button = document.getElementById('additembutton');
+        const itemlist = document.getElementById('itemlist');
+        const iteminput = document.getElementById('iteminput');
+
+        button.addEventListener('click', function() {
+            if(iteminput.value.trim() !== ''){
+
+                let newitem = document.createElement('li');
+                newitem.textContent = iteminput.value;
+                itemlist.appendChild(newitem);
+                iteminput.value = '';
+
+                let deletebutton = document.createElement('button');
+                deletebutton.textContent = 'delete';
+                newitem.appendChild(deletebutton);
+                deletebutton.addEventListener('click',function(){
+                    newitem.remove();
+                })
+            }
+        })
+    </script>
+</body>
+</html>
